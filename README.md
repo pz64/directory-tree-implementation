@@ -1,5 +1,8 @@
 
-INPUT
+Language: Kotlin
+
+
+**input**
 
 ```
 fun main() {
@@ -27,7 +30,7 @@ fun main() {
 }
 ```
 
-OUTPUT
+**output**
 
 ```
 ┕─Media
