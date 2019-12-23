@@ -16,4 +16,4 @@ class Folder(override var name: String) : Struct {
     fun remove(struct: Struct) = subStructs.remove(struct)
 }
 
-class File(override var name: String, type: String = "Uncategorised") : Struct {}
+class File(override var name: String, var type: String = "Uncategorised") : Struct {}
