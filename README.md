@@ -33,14 +33,14 @@ fun main() {
 **output**
 
 ```
-┕─Media
-   ┝─Songs
-   │  ┝─song-1.mp3
-   │  ┝─halo-2.wav
-   │  ┕─pho3.ogg
-   ┕─Images
-      ┝─photo-1.jpg
-      ┝─photo-2.jpg
-      ┕─photo-3.jpg
+╰─Media
+   ├─Songs
+   │  ├─song-1.mp3
+   │  ├─halo-2.wav
+   │  ╰─pho3.ogg
+   ╰─Images
+      ├─photo-1.jpg
+      ├─photo-2.jpg
+      ╰─photo-3.jpg
 
 ```
