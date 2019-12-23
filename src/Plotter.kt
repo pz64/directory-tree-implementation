@@ -64,8 +64,8 @@ class Plotter(private val probe: Probe) {
 
     enum class Lines(val value: String) {
         LINE("│"),
-        TEE("┝─"),
-        ELBOW("┕─"),
+        TEE("├─"),
+        ELBOW("╰─"),
         GAP(" ")
     }
 }
