@@ -37,9 +37,7 @@ class Plotter(private val probe: Probe) {
             val lineOrGapRecogPattern = ref.structPattern.substring(0 until ref.structPattern.lastIndex)
             for (i in lineOrGapRecogPattern) {
                 when (i) {
-                    '0' -> {
-                        print(Lines.LINE.value + tab)
-                    }
+                    '0' -> print(Lines.LINE.value + tab)
                     '1' -> print(Lines.GAP.value + tab)
                 }
 
@@ -49,10 +47,9 @@ class Plotter(private val probe: Probe) {
              * print T or Elbow
              */
             val teeOrElbowRecogPattern = ref.structPattern[ref.structPattern.lastIndex]
-            if (teeOrElbowRecogPattern == '0') {
-                print(Lines.TEE.value)
-            } else {
-                print(Lines.ELBOW.value)
+            when (teeOrElbowRecogPattern) {
+                '0' -> print(Lines.TEE.value)
+                '1' -> print(Lines.ELBOW.value)
             }
 
             /**

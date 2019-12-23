@@ -65,3 +65,43 @@ fun main() {
     plotter.tabWidth = 2
     plotter.plot()
 }
+
+/***
+
+OUTPUT
+''''''
+
+╰─Root
+    ├─Media
+    │  ├─Songs
+    │  │  ├─song-1.mp3
+    │  │  ├─halo-2.wav
+    │  │  ├─pho3.ogg
+    │  │  ╰─zzz
+    │  │     ╰─zzzz
+    │  │        ╰─phoo3.ogg
+    │  ╰─Images
+    │     ├─photo-1.jpg
+    │     ├─photo-2.jpg
+    │     ╰─photo-3.jpg
+    ├─Random
+    │  ├─Img1.jpg
+    │  ├─res.pdf
+    │  ├─song.mp4
+    │  ├─Song.mp3
+    │  ├─Imgr.gif
+    │  ├─Imx.tiff
+    │  ╰─Songs2.ogg
+    ├─z
+    │  ╰─zz
+    │     ├─xxxx.txt
+    │     ╰─zzz
+    │        ╰─zzzz
+    │           ╰─zzzzz
+    ╰─Documents
+        ├─Others
+        │  ╰─resume.pdf
+        ├─doc.pdf
+        ╰─pxd.doc
+
+ */

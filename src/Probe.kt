@@ -15,7 +15,7 @@ class Probe(private val struct: Struct) {
 
     /**
      * a recursive function that finds the
-     * @param level - holds the level or depth of the directory structure.
+     * @param level - holds the depth of the directory structure.
      * @param structPattern -s a string with 0s and 1s.
      *
      * this function feeds the [countRefs] for [Plotter] class to plot.
@@ -40,11 +40,11 @@ class Probe(private val struct: Struct) {
 }
 
 /**
- * this class hold the tree level and pattern to for the [Plotter] to plot the structure
+ * this class hold the reference of tree, level and pattern for the [Plotter] to plot the structure
  * @param structRef holds the reference of [Folder] or [File] object.
- * @param level holds the level or depth of the directory structure.
+ * @param level holds the depth of the directory structure.
  * @param structPattern is a string with 0s and 1s.
- * 0 indicats a particular element is the last sibling of a tree so [Lines.GAP] or [Lines.ELBOW] are dwawn
+ * 0 indicats a particular element is the last sibling of a tree so [Lines.GAP] or [Lines.ELBOW] are drawn
  * 1 indicates the sibling is not last element so [Lines.LINE] or [Lines.TEE] are drawn
  */
 class CountRef(val structRef: Struct, val level: Int, val structPattern: String)
