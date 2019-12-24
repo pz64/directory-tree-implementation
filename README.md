@@ -56,6 +56,7 @@ Before sorting
       ├─photo-3.jpg
       ├─photo-1.jpg
       ╰─photo-2.jpg
+
 After sorting
 ╰─Media
    ├─Images
