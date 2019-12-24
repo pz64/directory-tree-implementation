@@ -1,12 +1,10 @@
-import java.util.concurrent.locks.Condition
-
 /***
  * Utilities functions for sorting, grouping
  */
 object Utils {
 
     /**
-     * Function to sort folder structure
+     * Function to sort folder structure in place
      * @param struct - root folder to start sorting
      * @param selector - specify the property to sort @see [MutableList.sortBy]
      */
@@ -20,7 +18,7 @@ object Utils {
     }
 
     /**
-     * sort single folder
+     * sort single folder in place
      */
     inline fun <R : Comparable<R>> sort(struct: Folder, crossinline selector: (Struct) -> R?) {
         struct.subStructs.sortBy {
@@ -30,12 +28,13 @@ object Utils {
 
     /**
      * This function linearize and group every files under current struct.
+     * @return grouped folder
      */
-    fun group(struct: Struct): Folder {
+    fun group(struct: Folder) {
         val files: ArrayList<File> = linearize(struct)
         files.sortBy { it.type }
 
-        val grouped = Folder(struct.name)
+        val grouped = Folder("Groups")
 
         val type = files.map { it.type }.toSet()
 
@@ -49,7 +48,9 @@ object Utils {
 
             grouped.add(groupFolder)
         }
-        return grouped
+        struct.removaAll()
+        struct.add(grouped)
+
     }
 
     /**

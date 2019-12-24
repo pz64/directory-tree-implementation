@@ -1,5 +1,3 @@
-import java.util.regex.Pattern
-
 /**
  * This class Probes through the directory structure and create a linear array of data for the [Plotter]
  * class to Plot.
