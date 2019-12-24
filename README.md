@@ -98,7 +98,6 @@ Before Grouping
    ╰─tex.zip
 
 After Grouping
-
 ╰─Root Folder
    ╰─Groups
       ├─Audio
