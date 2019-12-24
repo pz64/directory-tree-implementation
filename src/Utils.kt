@@ -3,6 +3,19 @@
  */
 object Utils {
 
+    /***
+     * return unix style path for [struct] input
+     */
+    fun path(struct: Struct): String {
+        var current: Struct? = struct
+        val pathBuilder: StringBuilder = StringBuilder("/" + current?.name)
+        while (current?.parent != null) {
+            current = current.parent
+            pathBuilder.insert(0, "/" + current?.name)
+        }
+        return pathBuilder.toString()
+    }
+
     /**
      * Function to sort folder structure in place
      * @param struct - root folder to start sorting
@@ -48,7 +61,7 @@ object Utils {
 
             grouped.add(groupFolder)
         }
-        struct.removaAll()
+        struct.removeAll()
         struct.add(grouped)
 
     }
@@ -74,9 +87,4 @@ object Utils {
             }
         }
     }
-}
-
-enum class Order {
-    Ascending,
-    Descending
 }
