@@ -6,7 +6,7 @@ object Utils {
     /***
      * return unix style path for [struct] input
      */
-    fun extractPath(struct: Struct): String {
+    fun path(struct: Struct): String {
         var current: Struct? = struct
         val pathBuilder: StringBuilder = StringBuilder("/" + current?.name)
         while (current?.parent != null) {

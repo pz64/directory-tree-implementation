@@ -29,6 +29,6 @@ fun main() {
 
     println("\nunix Paths")
     Utils.linearize(rootFolder).forEach {
-        println(Utils.extractPath(it))
+        println(Utils.path(it))
     }
 }
