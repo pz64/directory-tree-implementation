@@ -2,9 +2,9 @@ import kotlin.concurrent.fixedRateTimer
 
 fun main() {
 
-    val image1 = File("photo-1.jpg", "Image")
-    val image2 = File("photo-2.jpg", "Image")
-    val image3 = File("photo-3.jpg", "Image")
+    val image1 = File("photo-3.jpg", "Image")
+    val image2 = File("photo-1.jpg", "Image")
+    val image3 = File("photo-2.jpg", "Image")
     val imageFolder = Folder("Images")
     imageFolder.add(image1, image2, image3)
 
@@ -58,8 +58,7 @@ fun main() {
     zzzzx.add(zzzzz)
 
     val rootFolder = Folder("Root")
-   rootFolder.add(medias, rFolder, z, docFolder)
-
+    rootFolder.add(Utils.group(medias), Utils.group(rFolder), z, docFolder)
 
     val probe = Probe(rootFolder)
     val plotter = Plotter(probe)
@@ -73,36 +72,36 @@ OUTPUT
 ''''''
 
 ╰─Root
-    ├─Media
-    │  ├─Songs
-    │  │  ├─song-1.mp3
-    │  │  ├─halo-2.wav
-    │  │  ├─pho3.ogg
-    │  │  ╰─zzz
-    │  │     ╰─zzzz
-    │  │        ╰─phoo3.ogg
-    │  ╰─Images
-    │     ├─photo-1.jpg
-    │     ├─photo-2.jpg
-    │     ╰─photo-3.jpg
-    ├─Random
-    │  ├─Img1.jpg
-    │  ├─res.pdf
-    │  ├─song.mp4
-    │  ├─Song.mp3
-    │  ├─Imgr.gif
-    │  ├─Imx.tiff
-    │  ╰─Songs2.ogg
-    ├─z
-    │  ╰─zz
-    │     ├─xxxx.txt
-    │     ╰─zzz
-    │        ╰─zzzz
-    │           ╰─zzzzz
-    ╰─Documents
-        ├─Others
-        │  ╰─resume.pdf
-        ├─doc.pdf
-        ╰─pxd.doc
+├─Media
+│  ├─Songs
+│  │  ├─song-1.mp3
+│  │  ├─halo-2.wav
+│  │  ├─pho3.ogg
+│  │  ╰─zzz
+│  │     ╰─zzzz
+│  │        ╰─phoo3.ogg
+│  ╰─Images
+│     ├─photo-1.jpg
+│     ├─photo-2.jpg
+│     ╰─photo-3.jpg
+├─Random
+│  ├─Img1.jpg
+│  ├─res.pdf
+│  ├─song.mp4
+│  ├─Song.mp3
+│  ├─Imgr.gif
+│  ├─Imx.tiff
+│  ╰─Songs2.ogg
+├─z
+│  ╰─zz
+│     ├─xxxx.txt
+│     ╰─zzz
+│        ╰─zzzz
+│           ╰─zzzzz
+╰─Documents
+├─Others
+│  ╰─resume.pdf
+├─doc.pdf
+╰─pxd.doc
 
  */
