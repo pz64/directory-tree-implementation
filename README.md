@@ -23,21 +23,40 @@ fun main() {
     val medias = Folder("Media")
     medias.add(audioFolder, imageFolder)
 
+    println("Before sorting")
+    val probe = Probe(medias)
+    val plotter = Plotter(probe)
+    plotter.tabWidth = 2
+    plotter.plot()
+
+
+    println("\nAfter sorting")
     /**
      * Sort all folders from [medias] to all children
      */
     Utils.sortRecursive(medias) {it.name}
 
-    val probe = Probe(medias)
-    val plotter = Plotter(probe)
-    plotter.tabWidth = 2
-    plotter.plot()
+    val probe2 = Probe(medias)
+    val plotter2 = Plotter(probe2)
+    plotter2.tabWidth = 2
+    plotter2.plot()
 }
 ```
 
 **output**
 
 ```
+Before sorting
+╰─Media
+   ├─Songs
+   │  ├─song-1.mp3
+   │  ├─halo-2.wav
+   │  ╰─pho3.ogg
+   ╰─Images
+      ├─photo-3.jpg
+      ├─photo-1.jpg
+      ╰─photo-2.jpg
+After sorting
 ╰─Media
    ├─Images
    │  ├─photo-1.jpg
@@ -47,7 +66,6 @@ fun main() {
       ├─halo-2.wav
       ├─pho3.ogg
       ╰─song-1.mp3
-
 ```
 
 **Grouping Example**
