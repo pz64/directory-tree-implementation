@@ -1,36 +1,34 @@
 fun main() {
 
-    val image2 = File("photo-2.jpg", "Image")
-    val image1 = File("photo-1.jpg", "Image")
-    val image3 = File("photo-3.jpg", "Image")
-    val imageFolder = Folder("Images")
-    imageFolder.add(image3, image1, image2)
+    val f1 = File("test.txt", "Text")
+    val f2 = File("Audio.mp3", "Audio")
+    val dir1 = Folder("dir1")
+    dir1.add(f1, f2)
+    val f3 = File("test-2.txt", "Text")
+    val f4 = File("vid-4.mp4", "Video")
+    val dir2 = Folder("dir2")
+    dir2.add(f3, dir1, f4)
+    val f5 = File("vid-2.mp4", "Video")
+    val f6 = File("vid-1.mp4", "Video")
+    val dir3 = Folder("dir3")
+    dir3.add(f5, f6, dir2)
+    val f7 = File("xxxz.bzip2", "Compressed")
+    val f8 = File("tex.zip", "Compressed")
 
-    val audio1 = File("song-1.mp3", "Audio")
-    val audio2 = File("halo-2.wav", "Audio")
-    val audio3 = File("pho3.ogg", "Audio")
+    val dir4 = Folder("dir4")
+    dir4.add(dir3, f7)
 
-    val audioFolder = Folder("Songs")
-    audioFolder.add(audio1, audio2, audio3)
+    val rootFolder = Folder("Root Folder")
+    rootFolder.add(dir4, f8)
 
-    val medias = Folder("Media")
-    medias.add(audioFolder, imageFolder)
-
-    println("Before sorting")
-    val probe = Probe(medias)
+    val probe = Probe(rootFolder)
     val plotter = Plotter(probe)
     plotter.tabWidth = 2
+
     plotter.plot()
 
-
-    println("\nAfter sorting")
-    /**
-     * Sort all folders from [medias] to all children
-     */
-    Utils.sortRecursive(medias) {it.name}
-
-    val probe2 = Probe(medias)
-    val plotter2 = Plotter(probe2)
-    plotter2.tabWidth = 2
-    plotter2.plot()
+    println("\nunix Paths")
+    Utils.linearize(rootFolder).forEach {
+        println(Utils.extractPath(it))
+    }
 }
