@@ -5,8 +5,6 @@ Language: Kotlin
 **Sorting Example**
 
 ```kotlin
-import kotlin.concurrent.fixedRateTimer
-
 fun main() {
 
     val image2 = File("photo-2.jpg", "Image")
