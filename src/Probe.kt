@@ -4,6 +4,8 @@
  */
 class Probe(private val struct: Struct) {
 
+    constructor(fileRecurser: FileRecurser): this(fileRecurser.struct)
+
     private val countRefs = arrayListOf<CountRef>()
 
     fun probe(): ArrayList<CountRef> {
@@ -20,7 +22,7 @@ class Probe(private val struct: Struct) {
      */
     private fun recurse(struct: Struct, level: Int, structPattern: String) {
         when (struct) {
-            is Folder -> {
+            is PFolder -> {
                 countRefs.add(CountRef(struct, level, structPattern))
 
                 struct.subStructs.forEachIndexed { i, sub ->
@@ -30,7 +32,7 @@ class Probe(private val struct: Struct) {
                         recurse(sub, level + 1, structPattern + "0")
                 }
             }
-            is File -> {
+            is PFile -> {
                 countRefs.add(CountRef(struct, level, structPattern))
             }
         }
@@ -39,7 +41,7 @@ class Probe(private val struct: Struct) {
 
 /**
  * this class hold the reference of tree, level and pattern for the [Plotter] to plot the structure
- * @param structRef holds the reference of [Folder] or [File] object.
+ * @param structRef holds the reference of [PFolder] or [PFile] object.
  * @param level holds the depth of the directory structure.
  * @param structPattern is a string with 0s and 1s.
  * 0 indicats a particular element is the last sibling of a tree so [Lines.GAP] or [Lines.ELBOW] are drawn

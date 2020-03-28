@@ -1,5 +1,5 @@
 /**
- * Common protocol for [Folder] and [File]
+ * Common protocol for [PFolder] and [PFile]
  */
 interface Struct {
     var name: String
@@ -7,7 +7,7 @@ interface Struct {
 }
 
 
-class Folder(override var name: String) : Struct {
+class PFolder(override var name: String) : Struct {
 
     override var parent: Struct? = null
 
@@ -36,6 +36,6 @@ class Folder(override var name: String) : Struct {
     }
 }
 
-class File(override var name: String, var type: String = "Uncategorised") : Struct {
+class PFile(override var name: String, var type: String = "Uncategorised") : Struct {
     override var parent: Struct? = null
 }

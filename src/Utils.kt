@@ -21,19 +21,19 @@ object Utils {
      * @param struct - root folder to start sorting
      * @param selector - specify the property to sort @see [MutableList.sortBy]
      */
-    fun <R : Comparable<R>> sortRecursive(struct: Folder, selector: (Struct) -> R?) {
+    fun <R : Comparable<R>> sortRecursive(struct: PFolder, selector: (Struct) -> R?) {
 
         sort(struct, selector)
 
         for (i in struct.subStructs)
-            if (i is Folder)
+            if (i is PFolder)
                 sortRecursive(i, selector)
     }
 
     /**
      * sort single folder in place
      */
-    inline fun <R : Comparable<R>> sort(struct: Folder, crossinline selector: (Struct) -> R?) {
+    inline fun <R : Comparable<R>> sort(struct: PFolder, crossinline selector: (Struct) -> R?) {
         struct.subStructs.sortBy {
             selector(it)
         }
@@ -43,11 +43,11 @@ object Utils {
      * This function linearize and group every files under current struct.
      * @return grouped folder
      */
-    fun group(struct: Folder) {
-        val files: ArrayList<File> = linearize(struct)
+    fun group(struct: PFolder) {
+        val files: ArrayList<PFile> = linearize(struct)
         files.sortBy { it.type }
 
-        val grouped = Folder("Groups")
+        val grouped = PFolder("Groups")
 
         val type = files.map { it.type }.toSet()
 
@@ -55,7 +55,7 @@ object Utils {
 
             val groupContent = files.filter { it.type == i }
 
-            val groupFolder = Folder(i)
+            val groupFolder = PFolder(i)
 
             groupFolder.add(*groupContent.toTypedArray())
 
@@ -69,20 +69,20 @@ object Utils {
     /**
      * linearize remove all sub folders and return every files as array
      */
-    fun linearize(struct: Struct): ArrayList<File> {
-        var structs = arrayListOf<File>()
+    fun linearize(struct: Struct): ArrayList<PFile> {
+        var structs = arrayListOf<PFile>()
         getAllFiles(struct, structs)
         return structs
     }
 
 
-    private fun getAllFiles(struct: Struct, out: ArrayList<in File>) {
+    private fun getAllFiles(struct: Struct, out: ArrayList<in PFile>) {
         when (struct) {
-            is Folder -> {
+            is PFolder -> {
                 for (i in struct.subStructs)
                     getAllFiles(i, out)
             }
-            is File -> {
+            is PFile -> {
                 out.add(struct)
             }
         }
